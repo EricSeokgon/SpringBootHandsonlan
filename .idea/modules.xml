@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan.iml" filepath="$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan_main.iml" group="SpringBootHandsonlan" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SpringBootHandsonlan_test.iml" group="SpringBootHandsonlan" />
+    </modules>
+  </component>
+</project>

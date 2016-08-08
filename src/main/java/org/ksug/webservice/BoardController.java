@@ -58,6 +58,16 @@ public class BoardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(boardService.writePost(boardname, postForm));
     }
 
+    @RequestMapping(value = "/{boardname}/{postId}", method = RequestMethod.PUT)
+    public ResponseEntity<Post> updatePost(@PathVariable long postId, String author, String title, String content) {
+        return ResponseEntity.ok(boardService.editPost(postId, author, title, content));
+    }
+
+    @RequestMapping(value = "{boardname}/{postId}", method = RequestMethod.DELETE)
+    public ResponseEntity<Post> deletePost(@PathVariable long postId, String author, String title, String content) {
+        return ResponseEntity.ok(boardService.erasePost(postId));
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> resourceNotFoundException(ResourceNotFoundException exption, Locale locale) {
         System.out.println(exption.getError());

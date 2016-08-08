@@ -1,4 +1,4 @@
-package org.ksug.board;
+package org.ksug.board.module;
 
 
 import org.omg.CORBA.Object;

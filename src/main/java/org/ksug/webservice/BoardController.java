@@ -3,13 +3,15 @@ package org.ksug.webservice;
 import org.ksug.board.Board;
 import org.ksug.board.Post;
 import org.ksug.board.module.BoardService;
+import org.ksug.board.module.PostForm;
 import org.ksug.board.module.ResourceNotFoundException;
+import org.ksug.webservice.support.MessageSourceAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 /**
@@ -51,6 +53,11 @@ public class BoardController {
         return ResponseEntity.ok(boardService.findPosts(boardname));
     }
 
+    @RequestMapping(value = "{boardname}", method = {RequestMethod.POST})
+    public ResponseEntity<Post> createPost(@PathVariable String boardname, @Valid PostForm postForm) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(boardService.writePost(boardname, postForm));
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> resourceNotFoundException(ResourceNotFoundException exption, Locale locale) {
         System.out.println(exption.getError());
@@ -58,7 +65,6 @@ public class BoardController {
         body.put("timestamp", new Date());
         body.put("status", exption.getStatus());
         body.put("error", exption.getError());
-
         body.put("message", messageSource.getMessage(exption.getCode(), exption.getArgs(), locale).orElse("No message available"));
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);

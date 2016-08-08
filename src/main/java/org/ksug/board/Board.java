@@ -31,6 +31,10 @@ public class Board {
         this.createdAt = new Date();
     }
 
+    public Post write(String author, String title, String content) {
+        return new Post(this, author, title, content);
+    }
+
     public String getName() {
         return name;
     }

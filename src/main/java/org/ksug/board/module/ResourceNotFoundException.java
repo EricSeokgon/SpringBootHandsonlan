@@ -1,7 +1,6 @@
 package org.ksug.board.module;
 
 
-import org.omg.CORBA.Object;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -27,7 +26,7 @@ public abstract class ResourceNotFoundException extends RuntimeException {
         return "error." + getClass().getSimpleName();
     }
 
-    public Object[] getArgs() {
+    public java.lang.Object[] getArgs() {
         return null;
     }
 }

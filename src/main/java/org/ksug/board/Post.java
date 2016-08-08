@@ -25,7 +25,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Board board;
 
-    public Post() { }
+    public Post(Board board, String author, String title, String content) { }
 
     public Post(String author, String title, String content, Board board) {
         this.author = author;

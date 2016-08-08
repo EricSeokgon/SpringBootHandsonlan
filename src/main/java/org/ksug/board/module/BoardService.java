@@ -52,4 +52,9 @@ public class BoardService {
         return post;
     }
 
+    public Post writePost(String boardname, PostForm postForm) {
+        Board board = findBoard(boardname);
+        Post post = board.write(postForm.getAuthor(), postForm.getTitle(), postForm.getContent());
+        return postRepository.save(post);
+    }
 }

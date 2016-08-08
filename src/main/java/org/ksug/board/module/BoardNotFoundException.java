@@ -1,6 +1,5 @@
 package org.ksug.board.module;
 
-import org.omg.CORBA.Object;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -27,7 +26,7 @@ public class BoardNotFoundException extends ResourceNotFoundException{
     }
     @Override
     public Object[] getArgs(){
-        return new Object[](boardname);
+        return new Object[]{boardname};
     }
 
 }

@@ -19,6 +19,11 @@ public abstract class ResourceNotFoundException extends RuntimeException {
     }
 
     public String getError() {
+
+        return HttpStatus.NOT_FOUND.getReasonPhrase();
+    }
+
+    public String getCode() {
         return "error." + getClass().getSimpleName();
     }
 

@@ -3,14 +3,14 @@ package org.ksug.webservice;
 import org.ksug.board.Board;
 import org.ksug.board.Post;
 import org.ksug.board.module.BoardService;
+import org.ksug.board.module.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Project: SpringBootHandsonlan
@@ -25,6 +25,10 @@ import java.util.List;
 @RequestMapping("/board")
 public class BoardController {
     private BoardService boardService;
+    private MessageSourceAccessor messageSource;
+
+    public BoardController() {
+    }
 
     @Autowired
     public void setBoardService(BoardService boardService) {
@@ -36,8 +40,27 @@ public class BoardController {
         return ResponseEntity.ok(boardService.findBoard(boardname));
     }
 
-    @RequestMapping(value = "{boardname", method = {RequestMethod.GET, RequestMethod.HEAD})
+    @RequestMapping(value = "{boardname}", method = {RequestMethod.GET, RequestMethod.HEAD})
+    public ResponseEntity<Board> free(@PathVariable String boardname) {
+        System.out.println(boardname);
+        return ResponseEntity.ok(boardService.findBoard(boardname));
+    }
+
+    @RequestMapping(value = "{boardname}/list", method = {RequestMethod.GET, RequestMethod.HEAD})
     public ResponseEntity<List<Post>> listPosts(@PathVariable String boardname) {
         return ResponseEntity.ok(boardService.findPosts(boardname));
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> resourceNotFoundException(ResourceNotFoundException exption, Locale locale) {
+        System.out.println(exption.getError());
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", new Date());
+        body.put("status", exption.getStatus());
+        body.put("error", exption.getError());
+
+        body.put("message", messageSource.getMessage(exption.getCode(), exption.getArgs(), locale).orElse("No message available"));
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 }

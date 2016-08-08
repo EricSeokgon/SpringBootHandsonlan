@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Project: SpringBootHandsonlan
@@ -35,6 +36,9 @@ public class BoardService {
 
     public Board findBoard(String boardname) {
         Board board = boardRepository.findByName(boardname);
+        if (Objects.isNull(board)) {
+            throw new BoardNotFoundException(boardname);
+        }
         return board;
     }
 

@@ -1,0 +1,36 @@
+service:
+  info:
+    name: Restful Web Service Example
+    version: 1.0.0
+
+---
+
+logging:
+  level:
+    org.springframework.boot: INFO
+    org.springframework.web: DEBUG
+    org.springframework.data: INFO
+
+---
+server.profile: server
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/SpringBootHandsonlan;MVcc=TUE
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+---
+spring:
+  profiles : production
+  main:
+    show-banner: false
+    web_environment: false
+server:
+  port: 8080
+---
+logging:
+  level:
+    org.springframework.boot: INFO
+    org.springframework.web: DEBUG
+    org.springframework.data: INFO

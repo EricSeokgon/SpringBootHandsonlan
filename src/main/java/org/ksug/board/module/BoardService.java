@@ -57,4 +57,16 @@ public class BoardService {
         Post post = board.write(postForm.getAuthor(), postForm.getTitle(), postForm.getContent());
         return postRepository.save(post);
     }
+
+    public Post editPost(long postId, String author, String title, String content) {
+        Post post = getPost(postId);
+
+        return post.update(author, title, content);
+    }
+
+    public Post erasePost(long postId) {
+        Post post = getPost(postId);
+        postRepository.delete(postId);
+        return post;
+    }
 }

@@ -1,4 +1,4 @@
-package org.ksug.board;
+package demo.ksug.board;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

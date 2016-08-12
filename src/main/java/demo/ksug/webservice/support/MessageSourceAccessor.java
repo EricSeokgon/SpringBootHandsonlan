@@ -1,4 +1,4 @@
-package org.ksug.webservice.support;
+package demo.ksug.webservice.support;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceResolvable;

@@ -1,6 +1,6 @@
-package org.ksug.board.module;
+package demo.ksug.board.module;
 
-import org.ksug.board.Board;
+import demo.ksug.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

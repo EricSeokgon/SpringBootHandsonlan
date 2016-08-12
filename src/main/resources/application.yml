@@ -2,15 +2,12 @@ service:
   info:
     name: Restful Web Service Example
     version: 1.0.0
-
 ---
-
 logging:
   level:
     org.springframework.boot: INFO
     org.springframework.web: DEBUG
     org.springframework.data: INFO
-
 ---
 server.profile: server
 spring:

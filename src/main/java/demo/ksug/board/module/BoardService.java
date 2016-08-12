@@ -1,7 +1,7 @@
-package org.ksug.board.module;
+package demo.ksug.board.module;
 
-import org.ksug.board.Board;
-import org.ksug.board.Post;
+import demo.ksug.board.Board;
+import demo.ksug.board.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

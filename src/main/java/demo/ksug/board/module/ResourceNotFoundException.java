@@ -1,4 +1,4 @@
-package org.ksug.board.module;
+package demo.ksug.board.module;
 
 
 import org.springframework.http.HttpStatus;

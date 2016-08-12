@@ -1,11 +1,11 @@
-package org.ksug.webservice;
+package demo.ksug.webservice;
 
-import org.ksug.board.Board;
-import org.ksug.board.Post;
-import org.ksug.board.module.BoardService;
-import org.ksug.board.module.PostForm;
-import org.ksug.board.module.ResourceNotFoundException;
-import org.ksug.webservice.support.MessageSourceAccessor;
+import demo.ksug.board.Board;
+import demo.ksug.board.Post;
+import demo.ksug.board.module.BoardService;
+import demo.ksug.board.module.PostForm;
+import demo.ksug.board.module.ResourceNotFoundException;
+import demo.ksug.webservice.support.MessageSourceAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +28,6 @@ import java.util.*;
 public class BoardController {
     private BoardService boardService;
     private MessageSourceAccessor messageSource;
-
-    public BoardController() {
-    }
 
     @Autowired
     public void setBoardService(BoardService boardService) {
